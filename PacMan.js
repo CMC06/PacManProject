@@ -4,28 +4,17 @@ const pacArray = [
   ];
 
 
-let pos = 0;
+let posX = 0;
 let posY = 0;
 let direction = 0;
 let focus = 0;
 
 function Run() {
   let img = document.getElementById("PacMan");
-  let imgWidth = img.width
-    focus = (focus + 1) % 2;
-    direction = checkPageBounds(direction, imgWidth);
-    img.src = pacArray[direction][focus];
-    if (direction) {
-      pos -= 20;
-      img.style.left = pos + "px";
-      } else {
-        pos += 20;
-        img.style.left = pos + 'px';
-      }
-     
-  setTimeout(Run, 200);
+  focus = (focus + 1) % 2;
+  img.src = pacArray[direction][focus];
 }
-//let start = function(){
+
 window.addEventListener("keydown", function(event){
     if(event.defaultPrevented){
        return;
@@ -36,12 +25,14 @@ window.addEventListener("keydown", function(event){
       case "ArrowDown":
       case "s":
         moveDown();
+        Run();
         break;
 
       case "Up":
       case "ArrowUp":
       case "w":
         moveUp();
+        Run();
         break;
 
       default:
@@ -49,6 +40,31 @@ window.addEventListener("keydown", function(event){
     }
     event.preventDefault();
   }, true);
+
+window.addEventListener("keydown", function(event){
+  if(event.defaultPrevented){
+      return;
+  }
+
+  switch(event.key){
+    case "Left":
+    case "ArrowLeft":
+    case "a":
+      moveLeft();
+      break;
+
+    case "Right":
+    case "ArrowRight":
+    case "d":
+      moveRight();
+      break;
+
+    default:
+      return;
+  }
+  event.preventDefault();
+}, true);
+
 
 function moveDown() {
   let img = document.getElementById("PacMan")
@@ -68,19 +84,26 @@ function moveUp() {
   img.style.top = posY + 'px';
 }
 
-//  Run();
-//}
-//start();
-
-function checkPageBounds(direction, imgWidth) {
-  if(pos + 200 >= Math.max(document.documentElement.clientWidth, window.innerWidth || 0)){
-    direction = 1;
+function moveLeft() {
+  let img = document.getElementById("PacMan");
+  posX -= 20;
+  if(posX < 0){
+    posX = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
   }
-  if(pos <= 0){
-    direction = 0;
-  }
-  return direction;
+  direction = 1;
+  img.style.left = posX + "px";
+  Run();
 }
 
-    //setInterval(Run, 100);
+function moveRight() {
+  let img = document.getElementById("PacMan");
+  posX += 20;
+  if(posX + 200 >= Math.max(document.documentElement.clientWidth, window.innerWidth || 0)){
+    posX = 0;
+  }
+  direction = 0;
+  img.style.left = posX + "px";
+  Run();
+}
+
   
