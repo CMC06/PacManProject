@@ -18,6 +18,14 @@ function mouth() {
   img.style.zIndex = 2
 }
 
+function pacInstructions() {
+  alert('To move PacMan, use your arrow keys (up/down/left/right) or standard wasd movement rules for PC gaming.');
+}
+
+window.addEventListener('load', function (){
+  pacInstructions();
+});
+
 window.addEventListener("keydown", function(event){
     if(event.defaultPrevented){
        return;
