@@ -126,7 +126,7 @@ function moveLeft() {
   direction = 1;
   img.style.left = posX + "px";
   mouth();
-  if(Math.abs(parseInt(img.style.left) - parseInt(fruit.style.left) + 25) <= 10 && Math.abs(parseInt(img.style.top) - parseInt(fruit.style.top)) <= 10) {
+  if(Math.abs(parseInt(img.style.left) - parseInt(fruit.style.left) + 25) <= 15 && Math.abs(parseInt(img.style.top) - parseInt(fruit.style.top)) <= 30) {
     gobble();
   }
 }
@@ -141,7 +141,7 @@ function moveRight() {
   direction = 0;
   img.style.left = posX + "px";
   mouth();
-  if(Math.abs(parseInt(img.style.left) - parseInt(fruit.style.left) - 25) <= 10 && Math.abs(parseInt(img.style.top) - parseInt(fruit.style.top)) <= 10) {
+  if(Math.abs(parseInt(img.style.left) - parseInt(fruit.style.left) - 25) <= 15 && Math.abs(parseInt(img.style.top) - parseInt(fruit.style.top)) <= 30) {
     gobble();
   }
 }
@@ -149,5 +149,12 @@ function moveRight() {
 function gobble(){
   let fruit = document.getElementById("fruitImage");
   fruit.remove();
+  score++;
+  console.log(score);
+  updateScore();
   fruitAppear();
+}
+
+function updateScore() {
+  document.getElementById("currentScore").innerHTML = 'Current Score: ' + score;
 }
