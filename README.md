@@ -5,7 +5,7 @@ This is a learning project and homage to classic arcade game, PacMan. I am using
 <br>
 
 <h6>Features:</h6>
-<p>Arrow key movements allowing the user to manipulate the movement of the PacMan animation. </p>
+<p>Arrow key movements allowing the user to manipulate the movement of the PacMan animation. PacMan can eat fruits by running over them from the left or right, and scoreboard is increased each time a fruit is eaten.</p>
 <br>
 
 <h6>Usage:</h6> 
@@ -15,9 +15,9 @@ This is a learning project and homage to classic arcade game, PacMan. I am using
 
 <h6>Future features should include: </h6>
 <ul>
-<li>pellet/food items animations that PacMan can be moved to "eat"</li>
+<li>pellet/food items animations that PacMan can be moved to "eat"--Implemented 3/31/21</li>
 <li>sound effects based on movement, eating, and other key events</li>
-<li>a points system that is shown on the screen</li>
+<li>a points system that is shown on the screen--Implemented 4/4/21</li>
 <li>random walk ghost animations that would cause player to lose points if they reach PacMan</li>
 <li>a maze system to create additional movement complexity/complication</li>
 </ul>
