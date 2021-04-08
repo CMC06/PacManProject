@@ -99,7 +99,7 @@ window.addEventListener("keydown", function(event){
 function moveDown() {
   let img = document.getElementById("PacMan")
   posY += 20;
-  if(posY > Math.max(document.documentElement.clientHeight, window.innerHeight)){
+  if(posY > Math.max(document.documentElement.clientHeight, window.innerHeight) - 75){
     posY = 0;
   }
   mouth();
@@ -110,7 +110,7 @@ function moveUp() {
   let img = document.getElementById("PacMan")
   posY -= 20;
   if(posY < 0){
-    posY = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    posY = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 75;
   }
   mouth();
   img.style.top = posY + 'px';
@@ -121,7 +121,7 @@ function moveLeft() {
   let fruit = document.getElementById("fruitImage");
   posX -= 20;
   if(posX < 0){
-    posX = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    posX = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) - 75;
   }
   direction = 1;
   img.style.left = posX + "px";
