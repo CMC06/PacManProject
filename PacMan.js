@@ -101,25 +101,35 @@ window.addEventListener("keydown", function(event){
   event.preventDefault();
 }, true);
 
-//TODO: add the gobble() call as conditional based on position coordinates for up/down eating
+//movement functions reset coordinates for PacMan image 
+//  checks to see if collision event between PacMan and fruit had occurred--if so, gobble() is called; 
+//  also calls mouth() to open and close PacMan's Mouth
 function moveDown() {
   let img = document.getElementById("PacMan")
+  let fruit = document.getElementById("fruitImage");
   posY += 20;
   if(posY > Math.max(document.documentElement.clientHeight, window.innerHeight) - 75){
     posY = 0;
   }
   mouth();
   img.style.top = posY + 'px';
+  if(Math.abs(parseInt(img.style.top) - parseInt(fruit.style.top)) <= 10 && Math.abs(parseInt(img.style.left) - parseInt(fruit.style.left)) <= 50){
+    gobble();
+  }
 }
 
 function moveUp() {
   let img = document.getElementById("PacMan")
+  let fruit = document.getElementById("fruitImage");
   posY -= 20;
   if(posY < 0){
     posY = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 75;
   }
   mouth();
   img.style.top = posY + 'px';
+  if(Math.abs(parseInt(img.style.top) - parseInt(fruit.style.top)) <= 25 && Math.abs(parseInt(img.style.left) - parseInt(fruit.style.left)) <= 50){
+    gobble();
+  }
 }
 
 function moveLeft() {
@@ -152,15 +162,17 @@ function moveRight() {
   }
 }
 
+//gobble function allows PacMan to "eat" fruit, generates new fruit, increments score by 1 and updates score count
 function gobble(){
   let fruit = document.getElementById("fruitImage");
   fruit.remove();
   score++;
-  console.log(score);
   updateScore();
   fruitAppear();
 }
 
+//creates HTML element for score keeping; initialized to 0;
 function updateScore() {
   document.getElementById("currentScore").innerHTML = `Current Score: ${score}`;
 }
+updateScore();
