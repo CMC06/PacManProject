@@ -11,6 +11,7 @@ let direction = 0;
 let focus = 0;
 let score = 0;
 
+//makes a random fruit image taken from fruits array appear at random coordinates on screen
 function fruitAppear(){
   const fruitDiv = document.getElementById("fruitDiv");
   let currentFruit = fruits[Math.floor(Math.random()*fruits.length)];
@@ -30,8 +31,10 @@ function fruitAppear(){
   fruitImage.style.zIndex = 0;
 }
 fruitAppear();  
-//setInterval(fruitAppear, 4000);
+//first call makes sure a fruit is up when the game starts
 
+//moves mouth open and closed by rotating through open and closed mouth images of PacMan
+//direction determines if PacMan is facing left or right
 function mouth() {
   let img = document.getElementById("PacMan");
   focus = (focus + 1) % 2;
@@ -39,6 +42,7 @@ function mouth() {
   img.style.zIndex = 2
 }
 
+//instructions about how to move PacMan/play the game; shows up on window load as pop up alert
 function pacInstructions() {
   alert('To move PacMan, use your arrow keys (up/down/left/right) or standard wasd movement rules for PC gaming.');
 }
@@ -47,6 +51,7 @@ window.addEventListener('load', function (){
   pacInstructions();
 });
 
+//event listeners for movement up/down
 window.addEventListener("keydown", function(event){
     if(event.defaultPrevented){
        return;
@@ -71,6 +76,7 @@ window.addEventListener("keydown", function(event){
     event.preventDefault();
   }, true);
 
+//event listeners for movement left/right
 window.addEventListener("keydown", function(event){
   if(event.defaultPrevented){
       return;
@@ -95,7 +101,7 @@ window.addEventListener("keydown", function(event){
   event.preventDefault();
 }, true);
 
-//add the gobble() call as conditional based on position coordinates
+//TODO: add the gobble() call as conditional based on position coordinates for up/down eating
 function moveDown() {
   let img = document.getElementById("PacMan")
   posY += 20;
@@ -156,5 +162,5 @@ function gobble(){
 }
 
 function updateScore() {
-  document.getElementById("currentScore").innerHTML = 'Current Score: ' + score;
+  document.getElementById("currentScore").innerHTML = `Current Score: ${score}`;
 }
