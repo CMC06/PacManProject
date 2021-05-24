@@ -1,9 +1,9 @@
 const pacArray = [
-  ['PacMan1.png', 'PacMan2.png'],
-  ['PacMan3.png', 'PacMan4.png']
+  ['img/PacMan1.png', 'img/PacMan2.png'],
+  ['img/PacMan3.png', 'img/PacMan4.png']
   ];
 
-const fruits = ['apple.png', 'banana.png', 'cherries.png', 'lemon.png', 'orange.png', 'strawberry.png'];
+const fruits = ['img/apple.png', 'img/banana.png', 'img/cherries.png', 'img/lemon.png', 'img/orange.png', 'img/strawberry.png'];
 
 let posX = 0;
 let posY = 0;
