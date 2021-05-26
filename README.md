@@ -16,6 +16,7 @@ This is a learning project and homage to classic arcade game, PacMan. I am using
 <h6>Future features should include: </h6>
 <ul>
 <li>pellet/food items animations that PacMan can be moved to "eat"--Implemented 3/31/21</li>
+<li>add mobile-friendly event listeners so game can be played on mobile browsers</li>
 <li>sound effects based on movement, eating, and other key events</li>
 <li>a points system that is shown on the screen--Implemented 4/4/21</li>
 <li>random walk ghost animations that would cause player to lose points if they reach PacMan</li>
